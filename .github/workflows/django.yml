@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ master, django ]
+    branches: [ master, dev, django ]
   pull_request:
-    branches: [ master, django ]
+    branches: [ master, dev, django ]
 
 defaults:
   run:

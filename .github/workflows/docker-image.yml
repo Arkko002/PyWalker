@@ -6,14 +6,19 @@ on:
   pull_request:
     branches: [ master ]
 
+#TODO Dev builds push to DockerHub, tags
 jobs:
 
   build:
 
+    defaults:
+      run:
+        working-directory: src/
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dockerfile: [Dockerfile-api, Dockerfile-react]
+        dockerfile: [Dockerfile-scraper.prod, Dockerfile-front.prod]
         
     steps:
     - name: Set up QEMU
