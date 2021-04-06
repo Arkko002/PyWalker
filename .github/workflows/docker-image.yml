@@ -39,5 +39,5 @@ jobs:
       with:
         file: ${{ matrix.dockerfile }}
         push: true
-        
+        context: .
         tags: arkko002/pywalker:latest
