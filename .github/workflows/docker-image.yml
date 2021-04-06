@@ -21,6 +21,8 @@ jobs:
         dockerfile: [Dockerfile-scraper.prod, Dockerfile-front.prod]
         
     steps:
+    - uses: actions/checkout@v2
+    
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
