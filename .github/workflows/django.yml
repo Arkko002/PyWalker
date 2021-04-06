@@ -38,4 +38,14 @@ jobs:
 
     - name: Run Tests
       run: |
-        python manage.py test
+        coverage run --source='.' manage.py test webwalker
+
+    - name: Generate coverage report
+      run: |
+        coverage report
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
