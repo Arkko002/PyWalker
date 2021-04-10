@@ -6,7 +6,7 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=scraper-api
+      - POSTGRES_DB=back-django-scraper_api
       - POSTGRES_USER=webwalker
       #TODO Password
       - POSTGRES_PASSWORD=test
