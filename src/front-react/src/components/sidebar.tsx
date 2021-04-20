@@ -1,7 +1,8 @@
 import React from "react";
-import PageList from "./page-list"
-import PageSearch from "./page-search"
 import ScrapedPage from "../models/scraped-page";
+import PageSearch from "./sidebar/page-search";
+import PageList from "./sidebar/page-list";
+import "../styles/sidebar.css"
 
 interface SidebarProps {
     pages: ScrapedPage[]

@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.css';
+import {BrowserRouter} from 'react-router-dom';
+import '../styles/App.css';
 import Sidebar from "../components/sidebar";
 import Main from "../components/main";
 import ScrapedPage from "../models/scraped-page";
 import ScraperService from "../adapters/scraper.service";
+import ErrorBoundary from "../components/error-boundary";
 
 interface AppState {
     pages: ScrapedPage[]
@@ -14,13 +16,17 @@ class App extends React.Component<any, AppState>{
     constructor(props: any) {
         super(props);
 
-        //TODO default page
-        let defaultPage = {id: 0, url: "", html: JSON,
-            request: {code:0, request: JSON},
-            childPages: Array<ScrapedPage>(),
-            location: ""}
+        const defaultPage = {id: 0, url: "", html: "{}", request: {code: 0, request: "{}"}, childPages: [], location: ""}
+        this.state = {pages: [], selectedPage: defaultPage}
+    }
 
-        this.state = {pages: ScraperService.fetchList(), selectedPage: defaultPage}
+    componentDidMount() {
+        //TODO error handling
+        const list = ScraperService.fetchList()
+        if (!list === undefined)
+        {
+            this.setState({pages: list})
+        }
     }
 
     onSelectedPageChange = (e: React.MouseEvent<HTMLInputElement>, pageId: number) : void => {
@@ -34,9 +40,17 @@ class App extends React.Component<any, AppState>{
 
     render() {
         return (
-            <div className="App">
-                <Sidebar pages={this.state.pages} onSelectedPageChange={this.onSelectedPageChange}/>
-                <Main page={this.state.selectedPage}/>
+            <div className="app-div">
+                <BrowserRouter>
+                    <ErrorBoundary>
+                        <Sidebar pages={this.state.pages}
+                                 onSelectedPageChange={this.onSelectedPageChange}/>
+                    </ErrorBoundary>
+
+                    <ErrorBoundary>
+                        <Main page={this.state.selectedPage}/>
+                    </ErrorBoundary>
+                </BrowserRouter>
             </div>
     )};
 }

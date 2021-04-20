@@ -17,7 +17,6 @@ function fetchList() : any {
         })
         .catch((error) => {
             //TODO error handliung
-            return error
         })
 }
 
@@ -28,7 +27,6 @@ function postScrapeRequest(url: String) {
         })
         .catch((error) => {
             //TODO error handling
-            return error
         })
 }
 

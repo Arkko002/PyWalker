@@ -1,6 +1,6 @@
 interface PageRequest {
    code: number
-   request: JSON
+   request: string // TODO Docs, should be stringified JSON
 }
 
 export default PageRequest;
