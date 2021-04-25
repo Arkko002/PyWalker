@@ -9,16 +9,20 @@ interface QueryControlState {
 }
 
 class QueryControl extends React.Component<QueryControlProps, QueryControlState> {
+	constructor(props: QueryControlProps) {
+		super(props);
+		this.state = {query: ""}
+	}
+
     render() {
         return (
             <div className="form-control query-control">
-                <label> Search Query
-                    <input
-                        name="searchQuery"
-                        type="text"
-                        value={this.state.query}
-                        onChange={this.props.onQueryChange}/>
-                </label>
+				<label htmlFor="query">Search Query</label>
+				<input
+					id="query"
+					name="searchQuery"
+					type="text"
+					onChange={this.props.onQueryChange}/>
             </div>
         )
     }

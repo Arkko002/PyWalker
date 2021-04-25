@@ -2,6 +2,8 @@ import React from "react";
 import UrlControl from "./url-control";
 import OptionsControl from "./options-control";
 import QueryControl from "./query-control";
+import "../../../styles/page-request-form.css"
+
 
 interface PageRequestFormProps {
 
@@ -16,7 +18,11 @@ interface PageRequestFormState {
 class PageRequestForm extends React.Component<PageRequestFormProps, PageRequestFormState> {
     constructor(props: PageRequestFormProps) {
         super(props);
-        this.state = {url: "", followLinks: true, searchQuery: "" }
+        this.state = {url: "", followLinks: true, searchQuery: "" };
+
+        this.onChangeBool = this.onChangeBool.bind(this);
+        this.onChangeSearchQuery = this.onChangeSearchQuery.bind(this);
+        this.onChangeStr = this.onChangeStr.bind(this);
     }
 
     onChangeStr(e: React.FormEvent<HTMLInputElement>) {
@@ -36,7 +42,7 @@ class PageRequestForm extends React.Component<PageRequestFormProps, PageRequestF
 
     render() {
        return (
-           <div className="page-request-form">
+           <div className="page-request-div">
                 <UrlControl onUrlChange={this.onChangeStr}/>
                 <OptionsControl onOptionChange={this.onChangeBool}/>
                 <QueryControl onQueryChange={this.onChangeSearchQuery}/>

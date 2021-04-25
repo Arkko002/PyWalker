@@ -26,7 +26,7 @@ class PageList extends React.Component<PageListProps, PageListState> {
 
         return (
             <div className="page-list-div">
-                <Link to="/create-request">
+                <Link to="/new-request">
                     <input type="button" className="btn create-request-btn" value="New Request"/>
                 </Link>
 
