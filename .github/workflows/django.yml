@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ master, django ]
+    branches: [ master, dev, django ]
   pull_request:
-    branches: [ master, django ]
+    branches: [ master, dev, django ]
 
 defaults:
   run:
@@ -18,17 +18,34 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.7, 3.8, 3.9]
+    services:
+      postgres:
+        #TODO
+        image: postgres
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Run Tests
       run: |
-        python manage.py test
+        coverage run --source='.' manage.py test webwalker
+
+    - name: Generate coverage report
+      run: |
+        coverage report
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
