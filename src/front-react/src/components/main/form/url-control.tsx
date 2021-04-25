@@ -11,12 +11,12 @@ class UrlControl extends React.Component<UrlControlProps, UrlControlState> {
     render() {
         return (
             <div className="form-control url-control">
-                <label> URL
-                    <input
-                        name="url"
-                        type="text"
-                        onChange={this.props.onUrlChange}/>
-                </label>
+				<label htmlFor="url">URL</label>
+				<input
+					id="url"
+					name="url"
+					type="text"
+					onChange={this.props.onUrlChange}/>
             </div>
         )
     }

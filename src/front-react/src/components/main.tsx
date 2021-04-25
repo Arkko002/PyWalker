@@ -3,6 +3,7 @@ import PageDetails from "./main/page-details";
 import ScrapedPage from "../models/scraped-page";
 import { Switch, Route } from "react-router-dom";
 import PageRequestForm from "./main/form/page-request-form";
+import "../styles/main.css"
 
 interface MainProps {
     page: ScrapedPage
