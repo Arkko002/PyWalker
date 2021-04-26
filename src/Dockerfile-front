@@ -1,14 +1,15 @@
 FROM node:13.12.0-alpine
-
 WORKDIR /app
+RUN adduser -D webwalker && chown -R webwalker /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY front-react/package.json ./
 COPY front-react/package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install --silent && npm install react-scripts@3.4.1 -g --silent
 
 COPY front-react/ ./
+
+USER webwalker
 
 CMD ["npm", "start"]

@@ -3,6 +3,7 @@ FROM python:3 as build
 ENV PYTHONBUFFERED=1
 
 WORKDIR /app
+RUN adduser -D webwalker && chown -R webwalker /app
 
 COPY back-django/requirements.txt /app/
 RUN pip install -r requirements.txt
@@ -13,5 +14,7 @@ COPY back-django/ /app/
 FROM nginx:stable-alpine
 #TODO Django as back end in Nginx
 COPY --from=build /app/build /usr/share/nginx/
-EXPOSE 8000
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+
+USER webwalker
+HEALTHCHECK CMD ["nginx", "-g", "daemon off;"]
