@@ -4,8 +4,9 @@ import '../styles/App.css';
 import Sidebar from "../components/sidebar";
 import Main from "../components/main";
 import ScrapedPage from "../models/scraped-page";
-import ScraperService from "../adapters/scraper.service";
+import ScraperService from "../tests/mocks/mock.scraper.service"
 import ErrorBoundary from "../components/error-boundary";
+import PageRequest from '../models/page-request';
 
 interface AppState {
     pages: ScrapedPage[]
@@ -16,17 +17,15 @@ class App extends React.Component<any, AppState>{
     constructor(props: any) {
         super(props);
 
-        const defaultPage = {id: 0, url: "", html: "{}", request: {code: 0, request: "{}"}, childPages: [], location: ""}
+
+        const defaultPage = new ScrapedPage(0, "", "{}", new PageRequest(0, "{}"), [], "")
         this.state = {pages: [], selectedPage: defaultPage}
     }
 
     componentDidMount() {
         //TODO error handling
-        const list = ScraperService.fetchList()
-        if (!list === undefined)
-        {
-            this.setState({pages: list})
-        }
+        const result = ScraperService.fetchList()
+		this.setState({pages: result});
     }
 
     onSelectedPageChange = (e: React.MouseEvent<HTMLInputElement>, pageId: number) : void => {

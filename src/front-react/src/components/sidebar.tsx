@@ -12,7 +12,7 @@ interface SidebarProps {
 class Sidebar extends React.Component<SidebarProps, any> {
     render() {
         return (
-            <div className="sidebar-div">
+            <div className="sidebar-div" role="sidebar">
                 <PageSearch/>
                 <PageList pages={this.props.pages} onSelectedPageChange={this.props.onSelectedPageChange}/>
             </div>

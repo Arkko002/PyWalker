@@ -42,11 +42,12 @@ class PageRequestForm extends React.Component<PageRequestFormProps, PageRequestF
 
     render() {
        return (
-           <div className="page-request-div">
+           <section className="page-request">
+			   	<h1>Create new request</h1>
                 <UrlControl onUrlChange={this.onChangeStr}/>
                 <OptionsControl onOptionChange={this.onChangeBool}/>
                 <QueryControl onQueryChange={this.onChangeSearchQuery}/>
-           </div>
+           </section>
        )
     }
 }

@@ -1,0 +1,22 @@
+.page-list {
+	padding-left: 0;
+}
+
+
+.page-list-item {
+	display: inline-block;
+	list-style-type: none;
+	width: 100%; 
+	height: 40px;
+}
+
+.page-list-item .btn {
+	width: 100%;
+	height: 100%;
+}
+
+.page-list-item .btn--active {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}

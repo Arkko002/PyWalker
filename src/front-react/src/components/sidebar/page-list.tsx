@@ -1,6 +1,8 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import ScrapedPage from "../../models/scraped-page";
+import "../../styles/page-list.css"
+
 
 interface PageListProps {
     pages: ScrapedPage[]
@@ -12,14 +14,24 @@ interface PageListState {
 }
 
 class PageList extends React.Component<PageListProps, PageListState> {
+	constructor(props: PageListProps) {
+		super(props);
+	}
+	
+	handlePageChange(e: React.MouseEvent<HTMLInputElement>) {
+		this.props.onSelectedPageChange(e, this.state.selectedPageIndex)
+	}
+
     render() {
         //TODO NavLink active css
         const items = this.props.pages.map(page =>
-            <li className="page-list-item" key={page.id}>
-                <NavLink to={`/page/${page.id}`}>
+            <li className="page-list-item" key={page.id}>	
+                <NavLink to={`/details/${page.id}`} activeClassName="btn--active">
                     <input
                         type="button"
-                        value={page.url}/>
+						className="btn"
+                        value={page.target_url}
+						onClick={(e) => this.props.onSelectedPageChange(e, page.id)}/>
                 </NavLink>
             </li>
         );

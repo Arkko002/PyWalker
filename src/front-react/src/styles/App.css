@@ -5,3 +5,18 @@
 .app-div Main {
     flex: 1;
 }
+
+.btn {
+	border-bottom: 1px solid black;
+	border-radius: 0px;
+
+	background-color: var(--bg-color-main);
+}
+
+.btn:hover {
+	background-color: var(--bg-color-hover);
+}
+
+.btn--active {
+	background-color: var(--bg-color-active);
+}

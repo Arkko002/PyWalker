@@ -12,7 +12,7 @@ interface MainProps {
 class Main extends React.Component<MainProps, any> {
     render() {
         return (
-            <div className="main-div">
+            <div className="main-div" role="main">
                 <Switch>
                     <Route path="/new-request">
                         <PageRequestForm/>

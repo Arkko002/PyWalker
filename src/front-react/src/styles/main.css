@@ -8,3 +8,18 @@
 
 }
 
+h1 {
+	text-align: center;
+}
+
+section {
+	background-color: var(--bg-color-main);
+	border-radius: 10px;
+
+	padding-left: 10px;
+}
+
+.details-controls-div {
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
