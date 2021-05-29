@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import axios from "axios";
-import MockAdapter from "axios-mock-adapter/types";
+import MockAdapter from "axios-mock-adapter";
 import MockService from "./mocks/mock.scraper.service";
 import { Router } from "react-router-dom";
 import App from '../pages/App';
@@ -9,13 +9,13 @@ import "@testing-library/jest-dom/extend-expect";
 import { createMemoryHistory } from "history";
 import Main from "../components/main";
 
-const data = MockService.fetchList();
+const data = MockService.createMockList();
 
 beforeAll(() => {
 	var mockAxios = new MockAdapter(axios);
-	mockAxios.onGet(`${MockService.API_URL}/pages/`).reply(200, data);
+	mockAxios.onGet(`${MockService.API_URL}/pages`).reply(200, data);
 
-	render(<App />)	
+	render(<App />)
 })
 
 test("showing page details", () => {

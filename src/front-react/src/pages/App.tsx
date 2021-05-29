@@ -4,7 +4,7 @@ import '../styles/App.css';
 import Sidebar from "../components/sidebar";
 import Main from "../components/main";
 import ScrapedPage from "../models/scraped-page";
-import ScraperService from "../tests/mocks/mock.scraper.service"
+import ScraperService from "../adapters/scraper.service"
 import ErrorBoundary from "../components/error-boundary";
 import PageRequest from '../models/page-request';
 

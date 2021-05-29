@@ -1,5 +1,3 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import { render, screen } from '@testing-library/react';
 import App from '../pages/App';
 import MockService from "./mocks/mock.scraper.service";
@@ -19,11 +17,10 @@ test("renders sidebar components", () => {
 });
 
 test("fetches stored scraping results from API on mount", () => {
-	const data = MockService.fetchList();
-	var mockAxios = new MockAdapter(axios);
-	mockAxios.onGet(`${MockService.API_URL}/pages/`).reply(200, data);
+	const data = MockService.createMockList();
+	MockService.axios.mockImplementation(() => Promise.resolve(data))
 
 	render(<App />)	
 
-	expect(axios.get(`${MockService.API_URL}/pages/`)).toHaveBeenCalled();
+	expect(MockService.axios.get).toHaveBeenCalledWith(`${MockService.API_URL}/pages`);
 });

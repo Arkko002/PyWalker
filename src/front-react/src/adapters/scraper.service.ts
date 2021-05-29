@@ -3,7 +3,7 @@
 import Axios, {AxiosError, AxiosResponse} from "axios"
 import ScrapedPage from "../models/scraped-page";
 
-const BASE_URL = "www.localhost:8080" //TODO
+const BASE_URL = "http://www.localhost:8080" //TODO
 
 var api = Axios.create({
     baseURL: BASE_URL,
@@ -11,7 +11,7 @@ var api = Axios.create({
 })
 
 function fetchList() : any {
-    api.get<ScrapedPage[]>("pages/")
+    api.get<ScrapedPage[]>("/pages/")
         .then((response: AxiosResponse) => {
             return response.data;
         })
@@ -21,7 +21,7 @@ function fetchList() : any {
 }
 
 function postScrapeRequest(url: String) {
-    api.post<ScrapedPage>("page/", {url: url})
+    api.post<ScrapedPage>("/page/", {url: url})
         .then((response: AxiosResponse) => {
            return response.data;
         })

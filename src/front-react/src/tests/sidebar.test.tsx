@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import axios from "axios";
-import MockAdapter from "axios-mock-adapter/types";
+import MockAdapter from "axios-mock-adapter"
 import MockService from "./mocks/mock.scraper.service";
 import App from '../pages/App';
 import "@testing-library/jest-dom/extend-expect";
 
 
-const data = MockService.fetchList();
+const data = MockService.createMockList();
 
 beforeAll(() => {
 	var mockAxios = new MockAdapter(axios);
-	mockAxios.onGet(`${MockService.API_URL}/pages/`).reply(200, data);
+	mockAxios.onGet(`${MockService.API_URL}/pages`).reply(200, data);
 
 	render(<App />)	
 })

@@ -1,9 +1,11 @@
+import * as axios from 'axios';
 import PageRequest from "../../models/page-request";
 import ScrapedPage from "../../models/scraped-page";
 
-const API_URL = "www.localhost:8080" //TODO store url in config
+const API_URL = "http://www.localhost:8080" //TODO store url in config
 
-function fetchList() : ScrapedPage[] {
+
+function createMockList() {
 	let root_request = new PageRequest(200, "{\"root_request\": \"asd\"}");
 	let child_pages = [new ScrapedPage(11, "child_url1", "{\"child_html1\": \"asd\"}", root_request, [], "api_url11")];
 
@@ -15,6 +17,6 @@ function fetchList() : ScrapedPage[] {
 }
 
 export default {
-    fetchList,
+	createMockList,
 	API_URL
 }
