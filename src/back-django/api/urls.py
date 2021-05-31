@@ -1,6 +1,6 @@
 from django.urls import path
 
-from scraper_api.views import PageListView, PageView
+from .views import PageListView, PageView
 
 urlpatterns = [
     path("pages/", PageListView.as_view()),

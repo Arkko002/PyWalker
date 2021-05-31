@@ -1,6 +1,6 @@
-from scraper_api.models import ScrapedPage
-from scraper_api.services.scraper_type import ScraperType
-from scraper_api.services.soup.soup_scraper import SoupScraper
+from ..models import ScrapedPage
+from ..services.scraper_type import ScraperType
+from ..services.soup.soup_scraper import SoupScraper
 
 
 class Scraper:

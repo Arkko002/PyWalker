@@ -5,8 +5,8 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponseServerError, JsonResponse
 from django.views import View
 
-from scraper_api.models import ScrapedPage
-from scraper_api.services.scraper import Scraper
+from .models import ScrapedPage
+from .services.scraper import Scraper
 
 
 class PageListView(View):
