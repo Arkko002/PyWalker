@@ -8,5 +8,6 @@ class GenericPage(scrapy.Item):
 
 class MorelePage(GenericPage):
     item_name = scrapy.Field()
+    category = scrapy.Field()
     price = scrapy.Field()
     discount = scrapy.Field()
