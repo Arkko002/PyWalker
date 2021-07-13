@@ -1,0 +1,14 @@
+{
+  "venvPath": "/home/arkko/.virtualenvs/",
+  "venv": "webwalker",
+  "include": ["./**"],
+
+  "pythonPlatform": "Linux",
+  "pythonVersion": "3.9",
+
+  "executionEnvironments": [
+	  {
+		  "root": "./"
+	  }
+  ]
+}
