@@ -1,16 +1,11 @@
 // TODO Axios api
 
-import Axios, {AxiosError, AxiosResponse} from "axios"
+import {AxiosError, AxiosResponse} from "axios"
+import api from "./api";
 
-const BASE_URL = "http://www.localhost:8080" //TODO
 
-var api = Axios.create({
-    baseURL: BASE_URL,
-    responseType: "json"
-})
-
-function fetchList() : any {
-    api.get("/pages/")
+function fetchList() : Promise<any> {
+   return api.get("/pages/")
         .then((response: AxiosResponse) => {
             return response.data;
         })
@@ -19,8 +14,8 @@ function fetchList() : any {
         })
 }
 
-function postScrapeRequest(url: String) {
-    api.post("/page/", {url: url})
+function postScrapeRequest(url: String): Promise<any> {
+    return api.post("/page/", {url: url})
         .then((response: AxiosResponse) => {
            return response.data;
         })

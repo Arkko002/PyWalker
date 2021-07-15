@@ -5,6 +5,7 @@ import Export from './export/export';
 import CreateJob from './create-job/create-job';
 import Jobs from './jobs/jobs';
 import Sidebar from './sidebar/sidebar';
+import AuthorizeDropbox from './export/authorize-dropbox';
 
 function App(): React.ReactElement {
     return (
@@ -24,6 +25,9 @@ function App(): React.ReactElement {
                     </Route>
                     <Route path="/export">
                         <Export/>
+                    </Route>
+                    <Route path="/authorize-dropbox">
+                        <AuthorizeDropbox/>
                     </Route>
                     <Route exact path="/api">
                         <Api/>

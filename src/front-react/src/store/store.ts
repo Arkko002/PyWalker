@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import jobsReducer from "./jobs"
+import jobsReducer from "./jobs";
+import dropboxReducer from "./dropbox";
 
 export const store = configureStore({
   reducer: {
     jobs: jobsReducer,
+    dropbox: dropboxReducer
   },
 });
 
