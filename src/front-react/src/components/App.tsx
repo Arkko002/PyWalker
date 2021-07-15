@@ -12,7 +12,7 @@ function App(): React.ReactElement {
         <div className="flex w-screen h-screen">
             <Sidebar />
 
-            <div className="w-full bg-gray-100">
+            <div className="w-full overflow-y-scroll bg-gray-100">
                 <Switch>
                     <Route exact path="/">
                         <Jobs/>
