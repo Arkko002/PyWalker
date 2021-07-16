@@ -1,0 +1,2 @@
+DROPBOX_PUBLIC_KEY = "2175k18uazdwzb4"
+DROPBOX_SECRET_KEY = "0n2hfybaefu1fcq"
