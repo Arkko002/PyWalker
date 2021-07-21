@@ -6,13 +6,19 @@ import TableItem from "./table-item";
 import Header from "../header";
 
 function Jobs(): React.ReactElement {
-    const jobs = useSelector((state: RootState) => state.jobs)
+    const jobs = [
+        {name:"Job1", status: "Running", scraped_pages: 1, failed_pages: 1, empty_pages: 1, created: Date.now()},
+        {name:"Job2", status: "Running", scraped_pages: 2, failed_pages: 2, empty_pages: 2, created: Date.now()},
+        {name:"Job3", status: "Running", scraped_pages: 3, failed_pages: 3, empty_pages: 3, created: Date.now()},
+        {name:"Job4", status: "Running", scraped_pages: 4, failed_pages: 4, empty_pages: 4, created: Date.now()},
+    ]
+    // const jobs = useSelector((state: RootState) => state.jobs)
 
     let tableItems;
     if(jobs.length > 0) {
-        tableItems = jobs.map((job) => {
-            <TableItem job={job}/> 
-        });
+        tableItems = jobs.map(job =>
+            <TableItem job={job}/>
+        )
     } else {
         tableItems = <label className="flex items-center justify-center h-full mt-4 text-xl opacity-40">There is no jobs to display</label>
     }
