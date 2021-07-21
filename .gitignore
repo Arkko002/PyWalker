@@ -755,3 +755,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Secrets
+src/back-django/dropbox/secrets.py
